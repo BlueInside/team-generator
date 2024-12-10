@@ -1,10 +1,47 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <meta
+      name="description"
+      content="Generate random League of Legends teams with ease! Create balanced teams, assign roles, and pick champions randomly with this slick, user-friendly tool."
+    />
+    <meta
+      name="keywords"
+      content="League of Legends, team generator, randomizer, LoL tools, champion picker, role assigner, League API"
+    />
+    <meta name="author" content="Karol Pulawski" />
+    <meta property="og:title" content="League of Legends Team Generator" />
+    <meta
+      property="og:description"
+      content="Effortlessly generate random teams and assign roles for League of Legends. Slick design and easy-to-use functionality for casual and competitive play."
+    />
+    <meta
+      property="og:image"
+      content="https://league-team-generator-assets.s3.eu-north-1.amazonaws.com/android-chrome-512x512.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAVPEYV5SLLJS3Z2JK%2F20241210%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20241210T152652Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjENf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmV1LW5vcnRoLTEiSDBGAiEA7R4Icap1YVQ2AJXRcac%2B2UfCDW4UN8l948%2BfxgBfI9cCIQDKm%2FHC6VZQoHe9v9WZG0%2FEcXXghu43bYkSGGSuDklJsirxAgiR%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDM3NjEyOTg0MjMyNiIMJ5lXxtweJkEYTGCSKsUC%2FPoat2J6mNEag6l6cJtaMumHfq1sSmCLpV%2BVV2RluhC6qbTtXUxtWSDZbnskhNkcxFNmfXEKqjYD%2BWCxWQD5QJaO54lqjaneo3YUuhwielc8OL5FR8Tvx9BVmoBCsSC5QKHPOicMHISjezingfVt4k7nNO6Y9nf0RencUKwNi74WuhXpelDojRHpEQpbNBhc1AmK5dLviEvngiKqyRKMqCLJf67TNrMyWzaNO86DliMirTrGLhEFr5vrN3%2B9K83T4o6QUwtCL0brbXUetSn6clJcporl%2Bw0nOp2EjsAF8lUQoHINAzCRmjg7YziIPNsIYTscd3ceknSq%2FS3lHF2%2F1zx73arq3dmgGLUKNrgLLnuCY8BPLe7fl%2FYOSQ4Fpyagb3SQJ8Xak%2BLLhgimwqhulMyuPEsQSTK9R7QqApGtynonZXUi7zDNtOG6BjqyAg8YC4Kh8f1txQ6gv7SoWqAXkIO3bOPjniXHa7J25%2FUNxr7zjLW8YvBh5lweCdANrY2TBIP%2F%2BN6vfF2mQjBz372jS2BwuwZ9l%2BefKvmda%2F9pWpvwJ7StrxyH32qJRI36khLKmeyGA27nOQQA9iN4PJUv7cxCDcnXAayOZmtPlCcBaLbYX98XYZXyKsaaJgtV97KDqleTzQvGCKqtlKrqngETQ3bNSYejmt95ygEdp%2B1GlO5SLxKvAv3JAU9rPGGeC4uwoalC5JtSl%2FzjQKaBV1JvxWWHELc5X9MCSn0ldhBrJ3XYnnR8JCrRR6WnRpYRKpp17kHGE0JaUYVNVganKH8HxZU%2B7%2BuwoNkMuslKJNXM7wOiZ3BZBTT7Q6nEhWXFJxtjHeyeydFb313VohHT588Mzw%3D%3D&X-Amz-Signature=71c3a8667a274aa7e4a8513546d6f07469469b0211fa388e266be2f7664ce78f&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+    />
+    <meta property="og:url" content="https://yourwebsite.com" />
+    <meta
+      name="twitter:card"
+      content="https://league-team-generator-assets.s3.eu-north-1.amazonaws.com/android-chrome-512x512.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAVPEYV5SLLJS3Z2JK%2F20241210%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20241210T152652Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjENf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmV1LW5vcnRoLTEiSDBGAiEA7R4Icap1YVQ2AJXRcac%2B2UfCDW4UN8l948%2BfxgBfI9cCIQDKm%2FHC6VZQoHe9v9WZG0%2FEcXXghu43bYkSGGSuDklJsirxAgiR%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDM3NjEyOTg0MjMyNiIMJ5lXxtweJkEYTGCSKsUC%2FPoat2J6mNEag6l6cJtaMumHfq1sSmCLpV%2BVV2RluhC6qbTtXUxtWSDZbnskhNkcxFNmfXEKqjYD%2BWCxWQD5QJaO54lqjaneo3YUuhwielc8OL5FR8Tvx9BVmoBCsSC5QKHPOicMHISjezingfVt4k7nNO6Y9nf0RencUKwNi74WuhXpelDojRHpEQpbNBhc1AmK5dLviEvngiKqyRKMqCLJf67TNrMyWzaNO86DliMirTrGLhEFr5vrN3%2B9K83T4o6QUwtCL0brbXUetSn6clJcporl%2Bw0nOp2EjsAF8lUQoHINAzCRmjg7YziIPNsIYTscd3ceknSq%2FS3lHF2%2F1zx73arq3dmgGLUKNrgLLnuCY8BPLe7fl%2FYOSQ4Fpyagb3SQJ8Xak%2BLLhgimwqhulMyuPEsQSTK9R7QqApGtynonZXUi7zDNtOG6BjqyAg8YC4Kh8f1txQ6gv7SoWqAXkIO3bOPjniXHa7J25%2FUNxr7zjLW8YvBh5lweCdANrY2TBIP%2F%2BN6vfF2mQjBz372jS2BwuwZ9l%2BefKvmda%2F9pWpvwJ7StrxyH32qJRI36khLKmeyGA27nOQQA9iN4PJUv7cxCDcnXAayOZmtPlCcBaLbYX98XYZXyKsaaJgtV97KDqleTzQvGCKqtlKrqngETQ3bNSYejmt95ygEdp%2B1GlO5SLxKvAv3JAU9rPGGeC4uwoalC5JtSl%2FzjQKaBV1JvxWWHELc5X9MCSn0ldhBrJ3XYnnR8JCrRR6WnRpYRKpp17kHGE0JaUYVNVganKH8HxZU%2B7%2BuwoNkMuslKJNXM7wOiZ3BZBTT7Q6nEhWXFJxtjHeyeydFb313VohHT588Mzw%3D%3D&X-Amz-Signature=71c3a8667a274aa7e4a8513546d6f07469469b0211fa388e266be2f7664ce78f&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+    />
+    <meta name="twitter:title" content="League of Legends Team Generator" />
+    <meta
+      name="twitter:description"
+      content="Generate random League of Legends teams, assign roles, and pick champions easily with this handy tool."
+    />
+    <meta name="twitter:image" content="/path-to-image.jpg" />
+    <title>League of Legends Team Generator</title>
+    <link
+      rel="icon"
+      href="https://league-team-generator-assets.s3.eu-north-1.amazonaws.com/favicon.ico?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAVPEYV5SLLMUXDD2G%2F20241210%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20241210T152529Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjENf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmV1LW5vcnRoLTEiRjBEAiBk4L9WwUxzO8%2BD8bXOwuA9lNEDIDhqWdVbB7WFftI6swIgBd5Jl1JPAM9yiFm16rU%2Fayh5V1td07%2FQWMLeb6yA1LUq8QIIkf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARAAGgwzNzYxMjk4NDIzMjYiDIB%2FNGUNWp2cXO3HtirFAmh9U69vBqlwu74TmPLKFglmaBoj%2B8O7Fk2AgtCI7ko7obSarTSHdgATJZ%2BbTAXO%2BQmBpI96GiT9hyFdloaWOfEiiDIP7Hc0ggerJCf4i%2BI2PEEnfh6ldouZkQD2owXASUKGPPz4UJwXLkNItIc1fGH6k4WlU5ApGerrzxa%2FFVwre8Fmntb2jiAp3uTYJg6uG49BVsaMFTlzR7DHVfJOFydoIQ0UoSpi6QUGz9OgI%2Bq4A5%2BAxRhhioqOVsLwohoKx%2Fvy2oLI52IL1tJ5Yn4TTea6SZ99eATf48Rns1Y4D7YsikXfhdUoFPAcdje362JT0ljeUhu0OcxUYEO1zLCgTju0m0LoUnY8ys60xO3RKGdfsoLA6p1Dx9qL1tEl4uOsSGrMLUWihlWC2xB1SqXAMwe8WXHtYUzdOddaZTTdmDl%2FCpMxLHEwzbThugY6tAI%2BPwfeyS8sBmtqhGCbrA27QAce2COJrxIeYxf5sVc%2B1hpEZueyr9nhuEXiOj2Z9nV54Aj0I3GwsYJsMitEomxIHSUoj%2F65MkDAbRt14XgAPxMCxNpNRP1NtL2S0ITAH7BNsKUqeVp1%2FbbZZBaTjJIYV7WmC6Fm2kqeXc4%2Fb1ZJrOvHESjqvC7DIMZ3qeLxeurbvtX%2BVtr2UTI4haVDL7vP6ZIpUMlanOwIxnA2bo7V0NsoysgzgnzhtGE4XcfZwfR%2BoESHlYA%2B7DDXk5XjhdytQoBK3QfEBYuM%2F%2B9ZrClhgqeG9JywWw6lxB7xin6JAVSe7ttlSRB97XlvvgNFjWoX2oMT8HSjYmMY5EqvuYwcQ0irSKf7ZVZHFjJuIlATgUH4LNEJl2l3XwylVdJXzR4OybqjMw%3D%3D&X-Amz-Signature=f742619410355944e87ca35e042951bb30c562935495b7b195ad5553faa90d55&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+      type="image/x-icon"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://league-team-generator-assets.s3.eu-north-1.amazonaws.com/apple-touch-icon.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAVPEYV5SLMKWUSEW2%2F20241210%2Feu-north-1%2Fs3%2Faws4_request&X-Amz-Date=20241210T152807Z&X-Amz-Expires=300&X-Amz-Security-Token=IQoJb3JpZ2luX2VjENf%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCmV1LW5vcnRoLTEiSDBGAiEAtxPkoCETOCp8WkYNEf6MWpOJsVclMS7fKB7E9TbR39ECIQDROBaJwGOaCAxopHxNq9whuWM%2FCrP3gQ9mvom2kPhurSrxAgiR%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDM3NjEyOTg0MjMyNiIMJfLPDmr927GUH9QhKsUCUBX9CQMVhszi0GiVpY581g0MpYs9ZhcWcaGq3ilda43beedfC%2BvRAyey8RcZZ4VgXiY4IGCpG36gNEuboog7nB6QEK9oK%2FK2UqgaeeUr3shKFkAaKwM2LQsZzEzW5CBIMq1UFm9nyt3yT0N2lkyOk5js9qf%2B6uwptiODzlMEBWpt%2BP2YAtBqXzpOUVkkwse8O5yNCYGBhUU%2Br1Zg0BLNp1OLuShhEwulXR8HfBggCUIpsomkr1%2B2XNCsNvn20ulqceX2chcI15586gb5k9I%2Bpdrv8CBlILHPbsw7fjGmj34cilyd1UYbLGl922BJimEPVxnZbcHU1tr9G%2F5rG9L045cjTbv749P7UpzqTWjKo82HFrYrJW5TM%2B9kdCF%2BNDuzKDNwy4S1HZZUlWUh2bU4WshBzoL4wtB3P8E6ygJw5hW%2B2qtH%2FTDNtOG6BjqyAnwSCNpux7PnBNT3wMMHrRsZOAjiqPFliGNdyV9dTPFRLe7P6EntwDA5n%2FiEoWZoAW7fOT6xZFGvoEn2T0D1Ol07rkfs4nfRcZ8bwtKg2RU7jco8I%2FFPR1%2FBwgq33iuwCT%2FJGCmSYgEFqS4TUVtS%2BKyDt2iAQ8vFf0%2BpiMu0n%2F4FywDtn0eE3Lw6cOzz542paa%2Flz3Q85wfa8JlbzxXM%2BFqMGds2AkcuZiYF09Jx%2B1GNTWnC0by5vq4qFnn6DikiU1ZHc%2F1yVNivOIsrouq4QnDEqjSfP0rKFeDEe1yc3id%2BEcJEr7WypD3f%2B8eF%2BpO5VASR0%2BO%2BWbJG1w3SJ7gA0Yjc9KazKeYUJ9o6MCHbqwqbOP0BHIDbhbGdQ6u6Q394ckOaoRqiU%2B1WBNHW6yr5Iwi7fA%3D%3D&X-Amz-Signature=f85e070a0c634b7ff6a4e346962d338215b6b7f3d6b492b4ce51b1ecd0869f51&X-Amz-SignedHeaders=host&response-content-disposition=inline"
+    />
   </head>
   <body>
     <div id="root"></div>
