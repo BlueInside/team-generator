@@ -5,7 +5,14 @@ const Main = () => {
   const [teamSize, setTeamSize] = useState(1);
   const [randomRoles, setRandomRoles] = useState(false);
   const [randomChampions, setRandomChampions] = useState(false);
+  const [playerUsernames, setPlayerUsernames] = useState([]);
   const [playerCount, setPlayerCount] = useState(4);
+
+  const handlePlayerUsernameChange = (index, username) => {
+    const updatedUsernames = [...playerUsernames];
+    updatedUsernames[index] = username;
+    setPlayerUsernames(updatedUsernames);
+  };
 
   return (
     <main className="flex flex-col items-center justify-center p-4 space-y-6">
@@ -86,7 +93,11 @@ const Main = () => {
       </div>
 
       <div className="w-full max-w-md">
-        <PlayerInput playerCount={playerCount} />
+        <PlayerInput
+          playerUsernames={playerUsernames}
+          playerCount={playerCount}
+          handlePlayerUsernameChange={handlePlayerUsernameChange}
+        />
       </div>
     </main>
   );
