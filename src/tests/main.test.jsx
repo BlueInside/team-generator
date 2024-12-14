@@ -112,7 +112,7 @@ describe('Main Component', () => {
     expect(playerInputs[0].value).toBe('Karol');
 
     // Type into the second player input field
-    user.type(playerInputs[1], 'John');
+    await user.type(playerInputs[1], 'John');
     expect(playerInputs[1].value).toBe('John');
   });
 });
